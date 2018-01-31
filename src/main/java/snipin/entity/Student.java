@@ -1,8 +1,11 @@
 package snipin.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -10,6 +13,9 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "student")
+@NamedQueries({
+        @NamedQuery(name = "getAllStudent", query = "from Student")
+})
 public class Student implements Serializable{
 
     private static final long serialVersionUID = 7915869521905121105L;
@@ -43,7 +49,7 @@ public class Student implements Serializable{
     private String address;
 
     @NotNull
-    @Size(min = 1900)
+    @Min(1900)
     @Column(name = "year")
     private Integer year;
 

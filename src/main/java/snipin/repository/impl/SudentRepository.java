@@ -1,5 +1,8 @@
 package snipin.repository.impl;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import snipin.entity.Student;
 import snipin.repository.DataRepository;
@@ -7,26 +10,34 @@ import snipin.repository.DataRepository;
 import java.io.Serializable;
 import java.util.List;
 
-@Repository("StudentRepository")
+@Repository("studentRepository")
 public class SudentRepository implements DataRepository<Student> {
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    protected Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
     @Override
     public Student get(Serializable id) {
-        return null;
+        return getSession().get(Student.class, id);
     }
 
     @Override
     public Serializable add(Student student) {
-        return null;
+        return getSession().save(student);
     }
 
     @Override
     public void update(Student student) {
-
+        getSession().update(student);
     }
 
     @Override
     public void delete(Student student) {
-
+        getSession().delete(student);
     }
 
     @Override
@@ -36,6 +47,6 @@ public class SudentRepository implements DataRepository<Student> {
 
     @Override
     public List<Student> getAll() {
-        return null;
+        return getSession().getNamedQuery("getAllStudent").list();
     }
 }

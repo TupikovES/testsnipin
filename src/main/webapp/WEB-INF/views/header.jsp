@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!doctype html>
@@ -11,6 +11,7 @@
     <spring:url value="/resources/css/bootstrap.css" var="bs" />
     <spring:url value="/resources/css/bootstrap-grid.css" var="bootstrapgrid" />
     <spring:url value="/resources/css/bootstrap-reboot.css" var="bootstrapreboot" />
+    <c:set var="rc" value="<%=request.getContextPath()%>" />
     <link href="${bs}" rel="stylesheet" />
     <link href="${bootstrapgrid}" rel="stylesheet" />
     <link href="${bootstrapreboot}" rel="stylesheet" />
@@ -21,15 +22,18 @@
         <div class="container">
             <ul class="nav">
                 <li class="nav-item">
-                    <a href="/snipin">Главная</a>
+                    <a class="nav-link" href="${rc}">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/snipin/students">Студенты</a>
+                    <a class="nav-link" href="${rc}/students">Студенты</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/snipin/specialities">Специяльности</a>
+                    <a class="nav-link" href="${rc}/specialities">Специяльности</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/snipin/departments">Факультеты</a>
+                    <a class="nav-link" href="${rc}/departments">Факультеты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${rc}/report">Отчет</a>
                 </li>
             </ul>

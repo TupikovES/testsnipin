@@ -1,5 +1,8 @@
 package snipin.repository.impl;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import snipin.entity.Department;
 import snipin.repository.DataRepository;
@@ -7,26 +10,34 @@ import snipin.repository.DataRepository;
 import java.io.Serializable;
 import java.util.List;
 
-@Repository("DepartmentRepository")
+@Repository("departmentRepository")
 public class DepartmentRepository implements DataRepository<Department> {
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    protected Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
     @Override
     public Department get(Serializable id) {
-        return null;
+        return getSession().get(Department.class, id);
     }
 
     @Override
     public Serializable add(Department department) {
-        return null;
+        return getSession().save(department);
     }
 
     @Override
     public void update(Department department) {
-
+        getSession().update(department);
     }
 
     @Override
     public void delete(Department department) {
-
+        getSession().delete(department);
     }
 
     @Override
@@ -36,6 +47,6 @@ public class DepartmentRepository implements DataRepository<Department> {
 
     @Override
     public List<Department> getAll() {
-        return null;
+        return getSession().getNamedQuery("getAllDepartment").list();
     }
 }

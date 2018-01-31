@@ -1,6 +1,8 @@
 package snipin.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -10,6 +12,9 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "speciality")
+@NamedQueries({
+        @NamedQuery(name = "getAllSpeciality", query = "from Speciality")
+})
 public class Speciality implements Serializable{
 
     private static final long serialVersionUID = 6486000961572560840L;
