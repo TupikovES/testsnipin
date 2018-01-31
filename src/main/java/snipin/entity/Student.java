@@ -50,7 +50,7 @@ public class Student implements Serializable{
     @NotNull
     @ManyToOne
     @JoinColumn(name = "speciality_id")
-    private Specialty specialty;
+    private Speciality speciality;
 
     public Student() {
     }
@@ -115,12 +115,12 @@ public class Student implements Serializable{
         this.year = year;
     }
 
-    public Specialty getSpecialty() {
-        return specialty;
+    public Speciality getSpeciality() {
+        return speciality;
     }
 
-    public void setSpecialty(Specialty specialty) {
-        this.specialty = specialty;
+    public void setSpeciality(Speciality speciality) {
+        this.speciality = speciality;
     }
 
     @Override
@@ -137,7 +137,7 @@ public class Student implements Serializable{
         if (!phone.equals(student.phone)) return false;
         if (!address.equals(student.address)) return false;
         if (!year.equals(student.year)) return false;
-        return specialty.equals(student.specialty);
+        return speciality.equals(student.speciality);
     }
 
     @Override
@@ -149,7 +149,7 @@ public class Student implements Serializable{
         result = 31 * result + phone.hashCode();
         result = 31 * result + address.hashCode();
         result = 31 * result + year.hashCode();
-        result = 31 * result + specialty.hashCode();
+        result = 31 * result + speciality.hashCode();
         return result;
     }
 
@@ -163,7 +163,7 @@ public class Student implements Serializable{
         sb.append(", phone='").append(phone).append('\'');
         sb.append(", address='").append(address).append('\'');
         sb.append(", year=").append(year);
-        sb.append(", specialty=").append(specialty);
+        sb.append(", speciality=").append(speciality);
         sb.append('}');
         return sb.toString();
     }

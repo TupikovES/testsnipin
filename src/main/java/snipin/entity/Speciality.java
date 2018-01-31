@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "speciality")
-public class Specialty implements Serializable{
+public class Speciality implements Serializable{
 
     private static final long serialVersionUID = 6486000961572560840L;
 
@@ -29,7 +29,7 @@ public class Specialty implements Serializable{
     @JoinColumn(name = "department_id")
     private Department department;
 
-    public Specialty() {
+    public Speciality() {
     }
 
     public static long getSerialVersionUID() {
@@ -65,11 +65,11 @@ public class Specialty implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Specialty specialty = (Specialty) o;
+        Speciality speciality = (Speciality) o;
 
-        if (!id.equals(specialty.id)) return false;
-        if (!name.equals(specialty.name)) return false;
-        return department.equals(specialty.department);
+        if (!id.equals(speciality.id)) return false;
+        if (!name.equals(speciality.name)) return false;
+        return department.equals(speciality.department);
     }
 
     @Override
@@ -82,7 +82,7 @@ public class Specialty implements Serializable{
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Specialty{");
+        final StringBuffer sb = new StringBuffer("Speciality{");
         sb.append("id=").append(id);
         sb.append(", name='").append(name).append('\'');
         sb.append(", department=").append(department);
