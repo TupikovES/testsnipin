@@ -24,8 +24,10 @@ public class StudentController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String viewStudents(Model model) {
+        model.addAttribute("title", "Студенты");
         model.addAttribute("students", studentService.getAll());
-        return "student";
+
+        return "students";
     }
 
 }
