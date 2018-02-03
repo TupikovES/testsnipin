@@ -10,7 +10,9 @@ import snipin.entity.Department;
 import snipin.entity.ReportYear;
 import snipin.entity.Speciality;
 import snipin.entity.Student;
+import snipin.repository.QueryRepository;
 import snipin.service.DataService;
+import snipin.service.QueryService;
 
 import java.util.*;
 
@@ -19,42 +21,19 @@ import java.util.*;
 public class ReportController {
 
     @Autowired
-    @Qualifier("studentService")
-    private DataService<Student> studentService;
-
-    @Autowired
-    @Qualifier("specialityService")
-    private DataService<Speciality> specialityService;
-
-    @Autowired
-    @Qualifier("departmentService")
-    private DataService<Department> departmentService;
+    @Qualifier("queryService")
+    private QueryService service;
 
     @GetMapping
-    public String viewReport(Model model) {
+    public String viewSqlReport(Model model) {
 
-        List<Student> students = studentService.getAll();
-        SortedSet<Integer> years = new TreeSet<>();
+        List<Object[]> reportYears = new ArrayList<>();
 
-        for (Student st : students) {
-            years.add(st.getYear());
-        }
-        List<Speciality> specialities = specialityService.getAll();
-        List<Department> departments = departmentService.getAll();
-
-        List<ReportYear> reportYears = new ArrayList<>();
-
-        for (int year : years) {
-            for (Department d : departments) {
-                int count = 0;
-                for (Student student : students) {
-                    if (student.getYear() == year & student.getSpeciality().getDepartment().equals(d)) {
-                        count++;
-                    }
-                }
-                reportYears.add(new ReportYear(year, d.getName(), count));
-            }
-        }
+        reportYears = service.query(
+                "select st.year, d.department_name, count(st.id) as count_students " +
+                "from student st join speciality sp inner join department d " +
+                "on st.speciality_id = sp.id and sp.department_id = d.id group by st.year, d.id order by st.year"
+        );
 
         model.addAttribute("reportList", reportYears);
 

@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import snipin.entity.ReportYear;
 import snipin.entity.Student;
 import snipin.repository.DataRepository;
 
@@ -48,5 +49,9 @@ public class SudentRepository implements DataRepository<Student> {
     @Override
     public List<Student> getAll() {
         return getSession().getNamedQuery("getAllStudent").list();
+    }
+
+    public List getQuery(String query, Class c) {
+        return getSession().createNativeQuery(query, c).list();
     }
 }

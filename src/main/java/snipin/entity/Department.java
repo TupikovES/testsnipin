@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "departament")
+@Table(name = "department")
 @NamedQueries({
         @NamedQuery(name = "getAllDepartment", query = "from Department")
 })
@@ -24,8 +24,8 @@ public class Department implements Serializable{
     private Long id;
     
     @NotEmpty
-    @Size(min = 2, max = 64)
-    @Column(name = "Department_name")
+    @Size(min = 2, max = 128)
+    @Column(name = "department_name")
     private String name;
 
     public Department() {

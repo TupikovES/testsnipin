@@ -1,17 +1,30 @@
 package snipin.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ReportYear {
 
+    @Id
+    private Long id;
+
+    @Column(name = "year")
     private int year;
+
+    @Column(name = "department_name")
     private String departmentName;
-    private int coutStudents;
+
+    @Column(name = "count_students")
+    private int countStudents;
 
     public ReportYear() {}
 
     public ReportYear(int year, String departmentName, int coutStudents) {
         this.year = year;
         this.departmentName = departmentName;
-        this.coutStudents = coutStudents;
+        this.countStudents = coutStudents;
     }
 
     public int getYear() {
@@ -31,10 +44,10 @@ public class ReportYear {
     }
 
     public int getCoutStudents() {
-        return coutStudents;
+        return countStudents;
     }
 
     public void setCoutStudents(int coutStudents) {
-        this.coutStudents = coutStudents;
+        this.countStudents = coutStudents;
     }
 }

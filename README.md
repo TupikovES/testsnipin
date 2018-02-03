@@ -1,6 +1,17 @@
 # web приложение на Java
 
-для генерации тестовых данных перейдти по url: <localhost:8080/testsnipin/generate>
+Тестовое задание для СамараНИПИНефть
 
+для запуска проекта требуется:
+----
+* maven 3.5
+* jdk 1.8
 
-jndi-name пула: *jdbc/snipinDataSource*.
+Запуск:
+----
+* mvn package
+* mvn jetty:run
+
+webapp url: <localhost:8080/testsnipin/>
+
+Используется H2 Database in-memory

@@ -14,9 +14,9 @@
     <tbody>
     <c:forEach items="${reportList}" var="rep">
         <tr>
-            <th scope="row">${rep.year}</th>
-            <td>${rep.departmentName}</td>
-            <td>${rep.coutStudents}</td>
+            <th scope="row">${rep[0]}</th>
+            <td>${rep[1]}</td>
+            <td>${rep[2]}</td>
         </tr>
     </c:forEach>
     </tbody>
