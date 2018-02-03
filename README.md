@@ -9,9 +9,10 @@
 
 Запуск:
 ----
-* mvn package
-* mvn jetty:run
+* `mvn package`
+* `mvn jetty:run`
 
 webapp url: <localhost:8080/testsnipin/>
 
 Используется H2 Database in-memory
+Таблицы бд генерерируются и заполняются с помощью sql-скриптов из папки `resource`
