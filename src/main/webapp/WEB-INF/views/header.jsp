@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Title</title>
+    <title>${title}</title>
     <spring:url value="/resources/css/bootstrap.css" var="bs" />
     <spring:url value="/resources/css/bootstrap-grid.css" var="bootstrapgrid" />
     <spring:url value="/resources/css/bootstrap-reboot.css" var="bootstrapreboot" />

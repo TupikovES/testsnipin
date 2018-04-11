@@ -3,6 +3,8 @@
 
 <h1>Студенты, специальности, факультеты</h1>
 
+<p>${ip}</p>
+
 <div>Просмотреть <a href="${rc}/report">отчет</a></div>
 
 <%@include file="footer.jsp"%>
